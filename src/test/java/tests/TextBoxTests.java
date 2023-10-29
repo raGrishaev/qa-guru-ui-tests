@@ -32,6 +32,5 @@ public class TextBoxTests {
         $("#output").$("#email").shouldHave(text("alex@egorov.com"));
         $("#output #currentAddress").shouldHave(text("Some street 1"));
         $("#output").$("#permanentAddress").shouldHave(text("Another street 1"));
-
     }
 }
