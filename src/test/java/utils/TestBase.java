@@ -11,5 +11,4 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = "chrome";
     }
-
 }
