@@ -1,4 +1,4 @@
-package tests;
+package tests.lecture;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -25,7 +25,7 @@ public class CssXpathExamples {
         $(byName("email")).setValue("1");
         $x("//input[@name='email'").setValue("1");
 
-        // <input type="email" class="inputtext" login_form_input_box">
+        // <input type="email" class="inputtext login_form_input_box">
         $("[class=inputtext][class=login_form_input_box]").setValue("1");
         $(".login_form_input_box").setValue("1");
         $(".inputtext.login_form_input_box").setValue("1");
@@ -45,6 +45,6 @@ public class CssXpathExamples {
         // <div>Hello, qa.guru!</div>
         $(byText("Hello, qa.guru!"));
         $(withText("llo, qa.gu"));
-        $x("//*[contains(text(], 'Hello, qa.guru!')]");
+        $x("//*[contains(text(), 'Hello, qa.guru!')]");
     }
 }
