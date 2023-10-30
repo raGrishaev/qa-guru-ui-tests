@@ -14,7 +14,6 @@ import utils.TestBase;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestFormWithAllFields extends TestBase {
@@ -40,8 +39,6 @@ public class TestFormWithAllFields extends TestBase {
         String city = utils.getRandomEnumValue(CityByUttarPradesh.class).toString();
 
         open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
 
         page.getInputFirstName().setValue(firstName);
         page.getInputLastName().setValue(lastName);
