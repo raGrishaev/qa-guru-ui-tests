@@ -1,24 +1,25 @@
 package tests.homework;
 
 import com.github.javafaker.Faker;
+import config.TestBase;
 import helpers.Utils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.jupiter.api.Test;
-import page.AutomationPracticeFormPageOblect;
+import page.AutomationPracticeFormPage;
 import page.enums.CityByUttarPradesh;
 import page.enums.Gender;
 import page.enums.Hobbies;
 import page.enums.Subjects;
-import utils.TestBase;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestFormWithAllFields extends TestBase {
 
-    AutomationPracticeFormPageOblect page = new AutomationPracticeFormPageOblect();
+    AutomationPracticeFormPage page = new AutomationPracticeFormPage();
     Faker faker = new Faker();
     Utils utils = new Utils();
 
@@ -39,6 +40,9 @@ public class TestFormWithAllFields extends TestBase {
         String city = utils.getRandomEnumValue(CityByUttarPradesh.class).toString();
 
         open("/automation-practice-form");
+
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
         page.getInputFirstName().setValue(firstName);
         page.getInputLastName().setValue(lastName);

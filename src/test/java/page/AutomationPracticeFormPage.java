@@ -6,7 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class AutomationPracticeFormPageOblect {
+public class AutomationPracticeFormPage {
     private final SelenideElement inputFirstName = $("#firstName");
     private final SelenideElement inputLastName = $("#lastName");
     private final SelenideElement inputUserEmail = $("#userEmail");
