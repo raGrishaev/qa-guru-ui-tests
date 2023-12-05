@@ -18,7 +18,6 @@ public class TableComponent {
     }
 
     public void checkTableIsHidden() {
-        //resultsTable.shouldNotBe(appear);
         resultsTable.shouldBe(hidden);
     }
 }
