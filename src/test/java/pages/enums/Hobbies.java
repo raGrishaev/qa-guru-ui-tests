@@ -1,4 +1,4 @@
-package page.enums;
+package pages.enums;
 
 public enum Hobbies {
     SPORTS("1"),

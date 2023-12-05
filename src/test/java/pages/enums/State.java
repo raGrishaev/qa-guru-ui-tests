@@ -1,4 +1,4 @@
-package page.enums;
+package pages.enums;
 
 public enum State {
     NCR("NCR"),

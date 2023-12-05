@@ -1,4 +1,4 @@
-package page.enums;
+package pages.enums;
 
 public enum Subjects {
     ENGLISH("English"),
