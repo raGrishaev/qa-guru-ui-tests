@@ -22,7 +22,7 @@ public class TestFormWithAllFields extends TestBase {
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
         String userEmail = faker.internet().emailAddress();
-        String gender = utils.getRandomEnumValue(Gender.class).toString();
+        String gender = utils.getRandomEnumValue(Gender.class).getValue();
         String userNumber = RandomStringUtils.random(10, false, true);
         String year = "1994";
         String month = "November";

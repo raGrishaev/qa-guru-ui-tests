@@ -4,6 +4,9 @@ public enum Gender {
     MALE("Male"),
     FEMALE("Female"),
     OTHER("Other");
+    public String getValue() {
+        return value;
+    }
 
     private final String value;
 

@@ -8,13 +8,14 @@ import pages.components.TableComponent;
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byAttribute;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
     private final SelenideElement inputFirstName = $("#firstName");
     private final SelenideElement inputLastName = $("#lastName");
     private final SelenideElement inputUserEmail = $("#userEmail");
-    private final ElementsCollection radiobuttonGender = $$("#genterWrapper");
+    private final SelenideElement genderWrapper = $("#genterWrapper");
     private final SelenideElement inputUserNumber = $("#userNumber");
     private final SelenideElement inputDateOfBirthInput = $("#dateOfBirthInput");
     private final SelenideElement inputSubjects = $("#subjectsInput");
@@ -26,7 +27,6 @@ public class RegistrationPage {
     private final SelenideElement fieldCity = $("#city");
     private final SelenideElement selectorCity = $("#react-select-4-input");
     private final SelenideElement buttonSubmit = $("#submit");
-    private final SelenideElement tableResponsive = $(".table-responsive");
 
     CalendarComponent calendarComponent = new CalendarComponent();
     TableComponent tableComponent = new TableComponent();
@@ -54,8 +54,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setGender(String gender) {
-        radiobuttonGender.findBy(text(gender)).click();
+    public RegistrationPage setGender(String value) {
+        genderWrapper.$(byText(value)).click();
         return this;
     }
 
