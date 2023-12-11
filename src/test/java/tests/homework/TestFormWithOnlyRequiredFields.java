@@ -2,12 +2,17 @@ package tests.homework;
 
 import com.github.javafaker.Faker;
 import config.TestBase;
+import helpers.DateForCalendar;
 import helpers.Utils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.enums.Gender;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Date;
 
 public class TestFormWithOnlyRequiredFields extends TestBase {
 
@@ -20,9 +25,10 @@ public class TestFormWithOnlyRequiredFields extends TestBase {
         String lastName = faker.name().lastName();
         String gender = utils.getRandomEnumValue(Gender.class).getValue();
         String userNumber = RandomStringUtils.random(10, false, true);
-        String year = "1994";
-        String month = "November";
-        String day = String.valueOf(RandomUtils.nextInt(0, 27));
+
+        Date date = new Date();
+        date.setTime(Instant.now().minus(Duration.ofDays(RandomUtils.nextInt(0, 36500))).toEpochMilli());
+        DateForCalendar dateForCalendar = utils.getDateForCalendar(date);
 
         new RegistrationPage()
                 .openPage()
@@ -30,7 +36,7 @@ public class TestFormWithOnlyRequiredFields extends TestBase {
                 .setLastName(lastName)
                 .setGender(gender)
                 .setUserNumber(userNumber)
-                .setDayOfBirth(day, month, year)
+                .setDayOfBirth(dateForCalendar.getYear(), dateForCalendar.getMonth(), dateForCalendar.getDay())
                 .submit();
 
         new RegistrationPage()
@@ -38,7 +44,7 @@ public class TestFormWithOnlyRequiredFields extends TestBase {
                 .checkEmpty("Student Email")
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", userNumber)
-                .checkResult("Date of Birth", day + " " + month + "," + year)
+                .checkResult("Date of Birth", dateForCalendar.getDay() + " " + dateForCalendar.getMonth() + "," + dateForCalendar.getYear())
                 .checkEmpty("Subjects")
                 .checkEmpty("Hobbies")
                 .checkEmpty("Picture")
