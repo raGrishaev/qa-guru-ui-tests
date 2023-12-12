@@ -8,7 +8,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-import pages.enums.CityByUttarPradesh;
 import pages.enums.Gender;
 import pages.enums.Hobbies;
 import pages.enums.Subjects;
@@ -31,15 +30,15 @@ public class TestFormWithAllFields extends TestBase {
         String userNumber = RandomStringUtils.random(10, false, true);
         String firstSubject = utils.getRandomEnumValue(Subjects.class).toString();
         String hobie = utils.getRandomEnumValue(Hobbies.class).toString();
-        String currentAddress = faker.chuckNorris().fact();
+        String currentAddress = faker.chuckNorris().fact();/*
         String state = "Uttar Pradesh";
-        String city = utils.getRandomEnumValue(CityByUttarPradesh.class).toString();
+        String city = utils.getRandomEnumValue(CityByUttarPradesh.class).toString();*/
 
         Date date = new Date();
         date.setTime(Instant.now().minus(Duration.ofDays(RandomUtils.nextInt(0, 36500))).toEpochMilli());
         DateForCalendar dateForCalendar = utils.getDateForCalendar(date);
 
-        new RegistrationPage()
+        RegistrationPage page = new RegistrationPage()
                 .openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -49,10 +48,10 @@ public class TestFormWithAllFields extends TestBase {
                 .setDayOfBirth(dateForCalendar.getYear(), dateForCalendar.getMonth(), dateForCalendar.getDay())
                 .setSubject(firstSubject)
                 .setHobies(hobie)
-                .uploadImage("2023-09-25_11h30_08.png")
+                .uploadImage("img/2023-09-25_11h30_08.png")
                 .setCurrentAddress(currentAddress)
-                .setState(state)
-                .setCity(city)
+                .setState()
+                .setCity()
                 .submit();
 
         new RegistrationPage()
@@ -65,6 +64,6 @@ public class TestFormWithAllFields extends TestBase {
                 .checkResult("Hobbies", hobie)
                 .checkResult("Picture", "2023-09-25_11h30_08.png")
                 .checkResult("Address", currentAddress)
-                .checkResult("State and City", state + " " + city);
+                .checkResult("State and City", page.getState() + " " + page.getCity());
     }
 }

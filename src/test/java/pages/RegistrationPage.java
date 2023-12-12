@@ -5,6 +5,8 @@ import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.TableComponent;
 
+import java.util.Random;
+
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byAttribute;
@@ -12,6 +14,25 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
+    private String state;
+    private String city;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     private final SelenideElement inputFirstName = $("#firstName");
     private final SelenideElement inputLastName = $("#lastName");
     private final SelenideElement inputUserEmail = $("#userEmail");
@@ -90,14 +111,30 @@ public class RegistrationPage {
         return this;
     }
 
-    public  RegistrationPage setState(String value){
+    public  RegistrationPage setState(/*String value*/){
         fieldState.click();
-        selectorState.setValue(value).pressEnter();
+        ElementsCollection fieldStates = $$("[id*=react-select-3-option]");
+
+        Random rnd = new Random();
+        int i = rnd.nextInt(fieldStates.size());
+        setState(fieldStates.get(i).getValue());
+
+        fieldStates.get(i).click();
+        /*fieldState.click();
+        selectorState.setValue(value).pressEnter();*/
         return this;
     }
-    public  RegistrationPage setCity(String value){
+    public  RegistrationPage setCity(){
         fieldCity.click();
-        selectorCity.setValue(value).pressEnter();
+        ElementsCollection fieldCities = $$("[id*=react-select-4-option]");
+
+        Random rnd = new Random();
+        int i = rnd.nextInt(fieldCities.size());
+        setCity(fieldCities.get(i).getValue());
+
+        fieldCities.get(i).click();
+        /*fieldCity.click();
+        selectorCity.setValue(value).pressEnter();*/
         return this;
     }
 

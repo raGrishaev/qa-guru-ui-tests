@@ -24,10 +24,11 @@ dependencies {
     testImplementation(
             'com.codeborne:selenide:7.0.3',
             'org.junit.jupiter:junit-jupiter:5.10.0',
-            "org.slf4j:slf4j-simple:2.0.9"
+            'org.slf4j:slf4j-simple:2.0.9'
     )
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
     implementation 'com.github.javafaker:javafaker:1.0.2'
-    compileOnly 'org.projectlombok:lombok:1.18.30'
+    implementation 'org.projectlombok:lombok:1.18.30'
 }
 
 tasks.withType(JavaCompile) {
