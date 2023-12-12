@@ -15,10 +15,11 @@ import pages.enums.Subjects;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Locale;
 
 public class TestFormWithAllFields extends TestBase {
 
-    Faker faker = new Faker(/*new Locale("ru")*/);
+    Faker faker = new Faker(new Locale("en"));
     Utils utils = new Utils();
 
     @Test
@@ -30,15 +31,16 @@ public class TestFormWithAllFields extends TestBase {
         String userNumber = RandomStringUtils.random(10, false, true);
         String firstSubject = utils.getRandomEnumValue(Subjects.class).toString();
         String hobie = utils.getRandomEnumValue(Hobbies.class).toString();
-        String currentAddress = faker.chuckNorris().fact();/*
-        String state = "Uttar Pradesh";
-        String city = utils.getRandomEnumValue(CityByUttarPradesh.class).toString();*/
+        String currentAddress = faker.chuckNorris().fact();
+        String state = utils.getRandomState();
+        String city = utils.getRandomCity(state);
 
         Date date = new Date();
         date.setTime(Instant.now().minus(Duration.ofDays(RandomUtils.nextInt(0, 36500))).toEpochMilli());
         DateForCalendar dateForCalendar = utils.getDateForCalendar(date);
 
-        RegistrationPage page = new RegistrationPage()
+
+        new RegistrationPage()
                 .openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -50,8 +52,8 @@ public class TestFormWithAllFields extends TestBase {
                 .setHobies(hobie)
                 .uploadImage("img/2023-09-25_11h30_08.png")
                 .setCurrentAddress(currentAddress)
-                .setState()
-                .setCity()
+                .setState(state)
+                .setCity(city)
                 .submit();
 
         new RegistrationPage()
@@ -64,6 +66,6 @@ public class TestFormWithAllFields extends TestBase {
                 .checkResult("Hobbies", hobie)
                 .checkResult("Picture", "2023-09-25_11h30_08.png")
                 .checkResult("Address", currentAddress)
-                .checkResult("State and City", page.getState() + " " + page.getCity());
+                .checkResult("State and City", state + " " + city);
     }
 }
