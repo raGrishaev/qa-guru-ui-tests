@@ -1,34 +1,31 @@
 package tests.homework;
 
-import com.github.javafaker.Faker;
 import config.TestBase;
+import helpers.TextBoxDataModel;
+import helpers.Utils;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
 public class TextBoxTestsNew extends TestBase {
 
+    Utils utils = new Utils();
     @Test
     void fillFormTest() {
 
-        Faker faker = new Faker();
-
-        String fullName = faker.name().fullName();
-        String userEmail = faker.internet().emailAddress();
-        String currentAddress = faker.chuckNorris().fact();
-        String permanentAddress = faker.chuckNorris().fact();
+        TextBoxDataModel testData = utils.generateDataForTextBox();
 
         new TextBoxPage()
                 .openPage()
-                .setFullName(fullName)
-                .setEmail(userEmail)
-                .setCurrentAddress(currentAddress)
-                .setPermanentAddress(permanentAddress)
+                .setFullName(testData.fullName())
+                .setEmail(testData.email())
+                .setCurrentAddress(testData.currentAddress())
+                .setPermanentAddress(testData.permanentAddress())
                 .submit();
 
         new TextBoxPage()
-                .checkResult("Name", fullName)
-                .checkResult("Email", userEmail)
-                .checkResult("Current Address", currentAddress)
-                .checkResult("Permananet Address", permanentAddress);
+                .checkResult("Name", testData.fullName())
+                .checkResult("Email", testData.email())
+                .checkResult("Current Address", testData.currentAddress())
+                .checkResult("Permananet Address", testData.permanentAddress());
     }
 }

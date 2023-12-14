@@ -2,8 +2,9 @@ package pages.components;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class CalendarComponent {
 
@@ -13,6 +14,6 @@ public class CalendarComponent {
     public void setDate(String year, String month, String day) {
         selectYear.selectOption(year);
         selectMonth.selectOption(month);
-        $(".react-datepicker__month").find(byText(day)).click();
+        $$( ".react-datepicker__day:not(.react-datepicker__day--outside-month)").findBy(text(day)).click();
     }
 }
