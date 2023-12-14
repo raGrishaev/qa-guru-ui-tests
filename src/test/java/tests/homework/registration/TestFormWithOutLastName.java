@@ -1,4 +1,4 @@
-package tests.homework;
+package tests.homework.registration;
 
 import config.TestBase;
 import helpers.RegistrationDataModel;

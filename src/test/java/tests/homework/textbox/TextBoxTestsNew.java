@@ -1,4 +1,4 @@
-package tests.homework;
+package tests.homework.textbox;
 
 import config.TestBase;
 import helpers.TextBoxDataModel;
