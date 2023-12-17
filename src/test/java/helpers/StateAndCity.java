@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class StateAndCity {
-    private String State;
-    private String City;
+    private String state;
+    private String city;
 }
