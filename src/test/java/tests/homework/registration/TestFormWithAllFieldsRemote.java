@@ -10,7 +10,6 @@ import pages.RegistrationPage;
 
 import static io.qameta.allure.Allure.step;
 
-@Tag("demoqa")
 public class TestFormWithAllFieldsRemote {
 
     @BeforeAll
