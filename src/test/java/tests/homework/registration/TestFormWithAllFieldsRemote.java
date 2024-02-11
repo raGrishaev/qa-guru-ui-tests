@@ -19,6 +19,7 @@ public class TestFormWithAllFieldsRemote {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = "chrome";
         Configuration.holdBrowserOpen = false;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     Utils utils = new Utils();
