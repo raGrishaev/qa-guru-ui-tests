@@ -10,15 +10,18 @@ repositories {
     mavenCentral()
 }
 
+def allureVersion = "2.21.0",
+    selenideVersion = "6.19.1"
+
 allure {
     report {
-        version.set("2.21.0")
+        version.set(allureVersion)
     }
     adapter {
         aspectjWeaver.set(true)
         frameworks {
             junit5 {
-                adapterVersion.set("2.21.0")
+                adapterVersion.set(allureVersion)
             }
         }
     }
@@ -37,7 +40,7 @@ compileTestJava {
 
 dependencies {
     testImplementation(
-            'com.codeborne:selenide:6.19.1',
+            "com.codeborne:selenide:$selenideVersion",
             'org.junit.jupiter:junit-jupiter:5.10.0',
             'org.slf4j:slf4j-simple:2.0.9',
             'org.projectlombok:lombok:1.18.30'
