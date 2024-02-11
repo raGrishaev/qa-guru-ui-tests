@@ -15,7 +15,7 @@ public class TestFormWithAllFieldsRemote {
 
     @BeforeAll
     static void setUpBrowser() {
-        Configuration.pageLoadStrategy = "eager";
+//        Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
 //        Configuration.timeout = 10000;
         Configuration.baseUrl = "https://demoqa.com";
@@ -31,12 +31,7 @@ public class TestFormWithAllFieldsRemote {
     void testFormWithAllFieldsRemote() {
         RegistrationDataModel testData = utils.generateDataForRegistration();
 
-        step("Open form", () -> {
-            new RegistrationPage()
-                    .openPage();
-        });
-
-        step("Fill form", () -> {
+        step("Open and fill form", () -> {
             new RegistrationPage()
                     .setFirstName(testData.firstName())
                     .setLastName(testData.lastName())
