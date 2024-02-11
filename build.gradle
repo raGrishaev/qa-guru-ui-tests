@@ -33,6 +33,10 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.30'
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 tasks.withType(Test) {
     useJUnitPlatform()
 
