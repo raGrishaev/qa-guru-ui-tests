@@ -22,7 +22,7 @@ compileTestJava {
 
 dependencies {
     testImplementation(
-            'com.codeborne:selenide:7.0.3',
+            'com.codeborne:selenide:7.1.0',
             'org.junit.jupiter:junit-jupiter:5.10.0',
             'org.slf4j:slf4j-simple:2.0.9',
             'org.projectlombok:lombok:1.18.30'
