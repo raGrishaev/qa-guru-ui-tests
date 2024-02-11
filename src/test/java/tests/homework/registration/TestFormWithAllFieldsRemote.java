@@ -14,11 +14,12 @@ public class TestFormWithAllFieldsRemote {
 
     @BeforeAll
     static void setUpBrowser() {
-        Configuration.pageLoadStrategy = "eager";
+//        Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
+        Configuration.timeout = 10000;
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = "chrome";
-        Configuration.holdBrowserOpen = false;
+//        Configuration.browser = "chrome";
+//        Configuration.holdBrowserOpen = true;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
