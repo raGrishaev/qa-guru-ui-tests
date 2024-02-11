@@ -35,6 +35,7 @@ public class TestFormWithAllFieldsRemote {
 
         step("Open and fill form", () -> {
             new RegistrationPage()
+                    .openPage()
                     .setFirstName(testData.firstName())
                     .setLastName(testData.lastName())
                     .setUserEmail(testData.userEmail())
