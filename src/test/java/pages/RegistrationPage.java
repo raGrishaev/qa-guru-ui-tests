@@ -34,7 +34,7 @@ public class RegistrationPage {
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        $(".fc-dialog-container").click();
+        executeJavaScript("$('.fc-primary-button').click()");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
