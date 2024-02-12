@@ -10,12 +10,12 @@ import pages.TextBoxPage;
 
 import static io.qameta.allure.Allure.step;
 
+@DisplayName("Проверка заполнения формы TextBox")
 public class TextBoxTestsNew extends TestBase {
 
     Utils utils = new Utils();
     @Test
     @Tag("demoqa")
-    @DisplayName("Проверка заполнения формы TextBox")
     void fillFormTest() {
 
         TextBoxDataModel testData = utils.generateDataForTextBox();

@@ -10,12 +10,12 @@ import pages.RegistrationPage;
 
 import static io.qameta.allure.Allure.step;
 
+@DisplayName("Проверка успешной регистрации с заполнением только обязательных полей")
 public class TestFormWithOnlyRequiredFields extends TestBase {
     Utils utils = new Utils();
 
     @Test
     @Tag("demoqa")
-    @DisplayName("Проверка успешной регистрации с заполнением только обязательных полей")
     void testFormWithOutLastName(){
         RegistrationDataModel testData = utils.generateDataForRegistration();
 

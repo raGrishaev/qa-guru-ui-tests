@@ -10,12 +10,12 @@ import pages.RegistrationPage;
 
 import static io.qameta.allure.Allure.step;
 
+@DisplayName("Проверка успешной регистрации с заполнением всех полей")
 public class TestFormWithAllFields extends TestBase {
     Utils utils = new Utils();
 
     @Test
     @Tag("demoqa")
-    @DisplayName("Проверка успешной регистрации с заполнением всех полей")
     void testFormWithAllFields(){
         RegistrationDataModel testData = utils.generateDataForRegistration();
 

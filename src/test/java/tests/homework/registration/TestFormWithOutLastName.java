@@ -10,12 +10,12 @@ import pages.RegistrationPage;
 
 import static io.qameta.allure.Allure.step;
 
+@DisplayName("Проверка отсутствия регистрации без указания фамилии")
 public class TestFormWithOutLastName extends TestBase {
     Utils utils = new Utils();
 
     @Test
     @Tag("demoqa")
-    @DisplayName("Проверка отсутствия регистрации без указания фамилии")
     void testFormWithOutLastName(){
 
         RegistrationDataModel testData = utils.generateDataForRegistration();
