@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
+import static io.qameta.allure.Allure.step;
+
 public class TestFormWithAllFields extends TestBase {
     Utils utils = new Utils();
 
@@ -15,32 +17,36 @@ public class TestFormWithAllFields extends TestBase {
     void testFormWithAllFields(){
         RegistrationDataModel testData = utils.generateDataForRegistration();
 
-        new RegistrationPage()
-                .openPage()
-                .setFirstName(testData.firstName())
-                .setLastName(testData.lastName())
-                .setUserEmail(testData.userEmail())
-                .setGender(testData.gender())
-                .setUserNumber(testData.userNumber())
-                .setDayOfBirth(testData.year(), testData.month(), testData.day())
-                .setSubject(testData.subject())
-                .setHobies(testData.hobie())
-                .uploadImage(testData.imagePath())
-                .setCurrentAddress(testData.currentAddress())
-                .setState(testData.state())
-                .setCity(testData.city())
-                .submit();
+        step("Open and fill form", () -> {
+            new RegistrationPage()
+                    .openPage()
+                    .setFirstName(testData.firstName())
+                    .setLastName(testData.lastName())
+                    .setUserEmail(testData.userEmail())
+                    .setGender(testData.gender())
+                    .setUserNumber(testData.userNumber())
+                    .setDayOfBirth(testData.year(), testData.month(), testData.day())
+                    .setSubject(testData.subject())
+                    .setHobies(testData.hobie())
+                    .uploadImage(testData.imagePath())
+                    .setCurrentAddress(testData.currentAddress())
+                    .setState(testData.state())
+                    .setCity(testData.city())
+                    .submit();
+        });
 
-        new RegistrationPage()
-                .checkResult("Student Name", testData.firstName() + " " + testData.lastName())
-                .checkResult("Student Email", testData.userEmail())
-                .checkResult("Gender", testData.gender())
-                .checkResult("Mobile", testData.userNumber())
-                .checkResult("Date of Birth", testData.day() + " " + testData.month() + "," + testData.year())
-                .checkResult("Subjects", testData.subject())
-                .checkResult("Hobbies", testData.hobie())
-                .checkResult("Picture", testData.imageName())
-                .checkResult("Address", testData.currentAddress())
-                .checkResult("State and City", testData.state() + " " + testData.city());
+        step("Verify results", () -> {
+            new RegistrationPage()
+                    .checkResult("Student Name", testData.firstName() + " " + testData.lastName())
+                    .checkResult("Student Email", testData.userEmail())
+                    .checkResult("Gender", testData.gender())
+                    .checkResult("Mobile", testData.userNumber())
+                    .checkResult("Date of Birth", testData.day() + " " + testData.month() + "," + testData.year())
+                    .checkResult("Subjects", testData.subject())
+                    .checkResult("Hobbies", testData.hobie())
+                    .checkResult("Picture", testData.imageName())
+                    .checkResult("Address", testData.currentAddress())
+                    .checkResult("State and City", testData.state() + " " + testData.city());
+        });
     }
 }

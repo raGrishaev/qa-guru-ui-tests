@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
+import static io.qameta.allure.Allure.step;
+
 public class TestFormWithOnlyRequiredFields extends TestBase {
     Utils utils = new Utils();
 
@@ -15,25 +17,29 @@ public class TestFormWithOnlyRequiredFields extends TestBase {
     void testFormWithOutLastName(){
         RegistrationDataModel testData = utils.generateDataForRegistration();
 
-        new RegistrationPage()
-                .openPage()
-                .setFirstName(testData.firstName())
-                .setLastName(testData.lastName())
-                .setGender(testData.gender())
-                .setUserNumber(testData.userNumber())
-                .setDayOfBirth(testData.year(), testData.month(), testData.day())
-                .submit();
+        step("Open and fill form", () -> {
+            new RegistrationPage()
+                    .openPage()
+                    .setFirstName(testData.firstName())
+                    .setLastName(testData.lastName())
+                    .setGender(testData.gender())
+                    .setUserNumber(testData.userNumber())
+                    .setDayOfBirth(testData.year(), testData.month(), testData.day())
+                    .submit();
+        });
 
-        new RegistrationPage()
-                .checkResult("Student Name", testData.firstName() + " " + testData.lastName())
-                .checkEmpty("Student Email")
-                .checkResult("Gender", testData.gender())
-                .checkResult("Mobile", testData.userNumber())
-                .checkResult("Date of Birth", testData.day() + " " + testData.month() + "," + testData.year())
-                .checkEmpty("Subjects")
-                .checkEmpty("Hobbies")
-                .checkEmpty("Picture")
-                .checkEmpty("Address")
-                .checkEmpty("State and City");
+        step("Verify results", () -> {
+            new RegistrationPage()
+                    .checkResult("Student Name", testData.firstName() + " " + testData.lastName())
+                    .checkEmpty("Student Email")
+                    .checkResult("Gender", testData.gender())
+                    .checkResult("Mobile", testData.userNumber())
+                    .checkResult("Date of Birth", testData.day() + " " + testData.month() + "," + testData.year())
+                    .checkEmpty("Subjects")
+                    .checkEmpty("Hobbies")
+                    .checkEmpty("Picture")
+                    .checkEmpty("Address")
+                    .checkEmpty("State and City");
+        });
     }
 }
