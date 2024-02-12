@@ -1,25 +1,17 @@
 package tests.homework.registration;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import helpers.Attach;
+import config.TestBase;
 import helpers.RegistrationDataModel;
 import helpers.Utils;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
-
-import java.util.Map;
 
 import static io.qameta.allure.Allure.step;
 
-public class TestFormWithAllFieldsRemote {
+public class TestFormWithAllFieldsRemote extends TestBase {
 
-    @BeforeAll
+/*    @BeforeAll
     static void setUpBrowser() {
 //        Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
@@ -45,7 +37,7 @@ public class TestFormWithAllFieldsRemote {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-    }
+    }*/
 
     Utils utils = new Utils();
 
