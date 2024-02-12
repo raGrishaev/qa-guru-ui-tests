@@ -3,6 +3,7 @@ package tests.homework.registration;
 import config.TestBase;
 import helpers.RegistrationDataModel;
 import helpers.Utils;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -14,10 +15,11 @@ public class TestFormWithAllFields extends TestBase {
 
     @Test
     @Tag("demoqa")
+    @DisplayName("Проверка успешной регистрации с заполнением всех полей")
     void testFormWithAllFields(){
         RegistrationDataModel testData = utils.generateDataForRegistration();
 
-        step("Open and fill form", () -> {
+        step("Открыть и заполнить всю форму регистрации", () -> {
             new RegistrationPage()
                     .openPage()
                     .setFirstName(testData.firstName())
@@ -35,7 +37,7 @@ public class TestFormWithAllFields extends TestBase {
                     .submit();
         });
 
-        step("Verify results", () -> {
+        step("Сверить заполняемые значения с полученными по итогам регистрации", () -> {
             new RegistrationPage()
                     .checkResult("Student Name", testData.firstName() + " " + testData.lastName())
                     .checkResult("Student Email", testData.userEmail())

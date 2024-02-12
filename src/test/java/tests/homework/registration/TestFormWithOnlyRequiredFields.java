@@ -3,6 +3,7 @@ package tests.homework.registration;
 import config.TestBase;
 import helpers.RegistrationDataModel;
 import helpers.Utils;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -14,10 +15,11 @@ public class TestFormWithOnlyRequiredFields extends TestBase {
 
     @Test
     @Tag("demoqa")
+    @DisplayName("Проверка успешной регистрации с заполнением только обязательных полей")
     void testFormWithOutLastName(){
         RegistrationDataModel testData = utils.generateDataForRegistration();
 
-        step("Open and fill form", () -> {
+        step("Открыть и заполнить форму регистрации толкьо обязательными полями", () -> {
             new RegistrationPage()
                     .openPage()
                     .setFirstName(testData.firstName())
@@ -28,7 +30,7 @@ public class TestFormWithOnlyRequiredFields extends TestBase {
                     .submit();
         });
 
-        step("Verify results", () -> {
+        step("Сверить заполняемые значения с полученными по итогам регистрации", () -> {
             new RegistrationPage()
                     .checkResult("Student Name", testData.firstName() + " " + testData.lastName())
                     .checkEmpty("Student Email")

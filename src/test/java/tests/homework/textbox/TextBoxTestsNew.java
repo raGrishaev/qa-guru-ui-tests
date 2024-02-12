@@ -3,6 +3,7 @@ package tests.homework.textbox;
 import config.TestBase;
 import helpers.TextBoxDataModel;
 import helpers.Utils;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
@@ -14,11 +15,12 @@ public class TextBoxTestsNew extends TestBase {
     Utils utils = new Utils();
     @Test
     @Tag("demoqa")
+    @DisplayName("Проверка заполнения формы TextBox")
     void fillFormTest() {
 
         TextBoxDataModel testData = utils.generateDataForTextBox();
 
-        step("Open and fill form", () -> {
+        step("Открыть и заполнить форму", () -> {
             new TextBoxPage()
                     .openPage()
                     .setFullName(testData.fullName())
@@ -28,7 +30,7 @@ public class TextBoxTestsNew extends TestBase {
                     .submit();
         });
 
-        step("Verify results", () -> {
+        step("Сверить введённые результаты", () -> {
             new TextBoxPage()
                     .checkResult("Name", testData.fullName())
                     .checkResult("Email", testData.email())
