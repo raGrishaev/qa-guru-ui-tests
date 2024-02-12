@@ -20,7 +20,7 @@ public class TextBoxTestsNew extends TestBase {
 
         TextBoxDataModel testData = utils.generateDataForTextBox();
 
-        step("Открыть и заполнить форму", () -> {
+        step("Открыть и заполнить форму всеми значениями", () -> {
             new TextBoxPage()
                     .openPage()
                     .setFullName(testData.fullName())
