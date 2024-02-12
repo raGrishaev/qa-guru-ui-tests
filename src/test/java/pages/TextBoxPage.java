@@ -4,8 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.withText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxPage {
     private final SelenideElement fullName = $("#userName");
@@ -17,6 +16,7 @@ public class TextBoxPage {
 
     public TextBoxPage openPage() {
         open("/text-box");
+        executeJavaScript("$('.fc-primary-button').click()");
         return this;
     }
 
