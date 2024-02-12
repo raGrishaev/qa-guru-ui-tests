@@ -10,7 +10,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
+
+import java.util.Map;
 
 import static io.qameta.allure.Allure.step;
 
@@ -25,6 +28,14 @@ public class TestFormWithAllFieldsRemote {
 //        Configuration.browser = "chrome";
 //        Configuration.holdBrowserOpen = true;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
+
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
@@ -33,6 +44,7 @@ public class TestFormWithAllFieldsRemote {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
+        Attach.addVideo();
     }
 
     Utils utils = new Utils();
